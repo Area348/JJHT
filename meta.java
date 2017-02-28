@@ -7,7 +7,7 @@ import java.io.BufferedReader;
 import com.google.gson.Gson;
 
 //-- Class voor het afhandelen van alle meta info
-public class Meta extends json
+public class meta extends json
 {
 	//Class vars:
 	String API_VERSION 	= null;
@@ -45,7 +45,7 @@ public class Meta extends json
 		
 	}
 	
-	private ArrayList<String> metaList()
+	public ArrayList<String> metaList()
 	{
 		ArrayList<String> metaList = new ArrayList<String>();
 		metaList.add("API_VERSION");

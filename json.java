@@ -18,7 +18,7 @@ public class json
 	}//-- Einde method openURL()
 	
 	
-	private static String readUrl(String urlString) throws Exception 
+	public static String readUrl(String urlString) throws Exception 
 	{
 		BufferedReader reader = null;
 		try 
@@ -36,12 +36,15 @@ public class json
 		catch(Exception e)
 		{
 			System.out.println("BufferedReader Error!!!");
-			//return null;
+			return null;
 		}
 		finally 
 		{
 			if (reader != null)
+			{
 				reader.close();
+			}
+			return "json.java Error!!!";
 		}
 	}//-- Einde method readUrl()
 	
