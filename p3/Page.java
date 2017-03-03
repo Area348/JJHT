@@ -2,6 +2,7 @@ import java.util.List;
 
 public class Page 
 {
+	/*
 	String id = "test";  
     String datetime = "test";
     String latitude = "test";
@@ -12,5 +13,7 @@ public class Page
 	String extra = "test";
 	String hint_nr = "test";
 	String icon = "test";
-    List<Item> items;
+	*/
+    //List<Item> items;
+	Item[] items;
 }
