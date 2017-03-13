@@ -13,7 +13,8 @@ public class jjht
 	{
 
 	//-- Verkrijg de inhoud van de website. (in dit geval json)
-		String json = readUrl("http://jotihunt-api-v2.area348.nl/vos/cKOFQls4ihdc2FiR05qrIDOK5Ub8D0Ksive2xwRKmDmVcWVo22hvl0E65sKxJtOFfExN659Nhmn1eAphVm0WQKmQXnckHjKf59HVy0ie5tgu9CNyH3CLeSXXGFxuywycN2KqSkk1LW1kW12cl86WumqrjkJ1h6fwniFj40ecjNFyBNadSzsvCeLjNnOVS4OeQWty831KK2b98WaBhoHsCtZxaMLdmpfjaX8b5uFG3Dz7yt2nxBNLv659pAASI8y/A/all");					  
+		System.out.print("Inhoud URL: ");
+		String json = readUrl("http://jotihunt-api-v2.area348.nl/vos/cKOFQls4ihdc2FiR05qrIDOK5Ub8D0Ksive2xwRKmDmVcWVo22hvl0E65sKxJtOFfExN659Nhmn1eAphVm0WQKmQXnckHjKf59HVy0ie5tgu9CNyH3CLeSXXGFxuywycN2KqSkk1LW1kW12cl86WumqrjkJ1h6fwniFj40ecjNFyBNadSzsvCeLjNnOVS4OeQWty831KK2b98WaBhoHsCtZxaMLdmpfjaX8b5uFG3Dz7yt2nxBNLv659pAASI8y/A/last");					  
 	//--Print de verkregen inhout van json, voor controle van de inhoud.
 		System.out.println(json);
 		System.out.println("---------------------------");
@@ -31,9 +32,36 @@ public class jjht
 		
 		System.out.println("---------------------------");
 	//-- fromJson zo als die bij 1 object werkt.	
-		//-- Page page = gson.fromJson(json, Page.class);
-
-		Object naam = gson.fromJson(URLJOTIAPI, ......)
+		System.out.print("gson.fromJson(): ");
+		Page page = gson.fromJson(json, Page.class);
+		System.out.println("");
+		System.out.println("---------------------------");
+	//-- Laat het id van het object (van uit de db zien)
+		System.out.println("id in de db:" + page.id);
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		
+		
+		System.out.print("Inhoud URL: ");
+		String json2 = readUrl("http://jotihunt-api-v2.area348.nl/vos/cKOFQls4ihdc2FiR05qrIDOK5Ub8D0Ksive2xwRKmDmVcWVo22hvl0E65sKxJtOFfExN659Nhmn1eAphVm0WQKmQXnckHjKf59HVy0ie5tgu9CNyH3CLeSXXGFxuywycN2KqSkk1LW1kW12cl86WumqrjkJ1h6fwniFj40ecjNFyBNadSzsvCeLjNnOVS4OeQWty831KK2b98WaBhoHsCtZxaMLdmpfjaX8b5uFG3Dz7yt2nxBNLv659pAASI8y/A/last");					  
+//-- HIER MEE VERDER ZIE:
+//-- http://stackoverflow.com/questions/16654042/gson-expected-begin-array-but-was-begin-object
+		//Page[] Page2 = gson.fromJson(json2, Page[].class);
+		
+		
+	// try{
+		// Hunter hunter = gson.fromJson(...,Hunter.class);
+		// doe iets met hunter.
+	// }  catch(NOTANOBJECTERROR  e){
+		// aannemen dat het een array is.
+		// Hunter[] hunters = gson.fromJson(...,Hunter[].class);
+	// }
+		
+		
+		
+		//Object naam = gson.fromJson(URLJOTIAPI, ......);
 		
 		
 		// Field[] fields = page.getClass().getDeclaredFields();
@@ -42,14 +70,19 @@ public class jjht
 			// System.out.println(fields[i].getName() + " - " + fields[i].get(page));
 		// }
 		
-		System.out.println("---------------------------");
-		//System.out.println(page.id);
+
 		
 		
-		for (Item item : page.items)
-		{
-			System.out.println("    " + item.id);
-		}
+		
+		
+		// System.out.print("Inhoud URL: ");
+		// String json = readUrl("http://jotihunt-api-v2.area348.nl/vos/cKOFQls4ihdc2FiR05qrIDOK5Ub8D0Ksive2xwRKmDmVcWVo22hvl0E65sKxJtOFfExN659Nhmn1eAphVm0WQKmQXnckHjKf59HVy0ie5tgu9CNyH3CLeSXXGFxuywycN2KqSkk1LW1kW12cl86WumqrjkJ1h6fwniFj40ecjNFyBNadSzsvCeLjNnOVS4OeQWty831KK2b98WaBhoHsCtZxaMLdmpfjaX8b5uFG3Dz7yt2nxBNLv659pAASI8y/A/last");					  
+		
+		
+		// for (Item item : Page.items)
+		// {
+			// System.out.println("    " + item.id);
+		// }
 		
 	}
 
