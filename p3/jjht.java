@@ -8,12 +8,18 @@ import java.lang.reflect.Type;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Field;
+import java.lang.reflect.Type;
 
 public class jjht
 {
 	public static void main(String[] args) throws Exception 
 	{
 
+	// JsonParser parser = new JsonParser();
+	// JsonObject rootObejct = parser.parse(yourJsonString).getAsJsonObject();
+	// JsonElement projectElement = rootObejct.get("project");
+	
+	
 	//-- Verkrijg de inhoud van de website. (in dit geval json)
 		System.out.print("Inhoud URL: ");
 		String json = readUrl("http://jotihunt-api-v2.area348.nl/vos/cKOFQls4ihdc2FiR05qrIDOK5Ub8D0Ksive2xwRKmDmVcWVo22hvl0E65sKxJtOFfExN659Nhmn1eAphVm0WQKmQXnckHjKf59HVy0ie5tgu9CNyH3CLeSXXGFxuywycN2KqSkk1LW1kW12cl86WumqrjkJ1h6fwniFj40ecjNFyBNadSzsvCeLjNnOVS4OeQWty831KK2b98WaBhoHsCtZxaMLdmpfjaX8b5uFG3Dz7yt2nxBNLv659pAASI8y/A/last");					  
@@ -61,6 +67,23 @@ public class jjht
 		System.out.print("Inhoud URL2: ");
 		String json2 = readUrl("http://jotihunt-api-v2.area348.nl/vos/cKOFQls4ihdc2FiR05qrIDOK5Ub8D0Ksive2xwRKmDmVcWVo22hvl0E65sKxJtOFfExN659Nhmn1eAphVm0WQKmQXnckHjKf59HVy0ie5tgu9CNyH3CLeSXXGFxuywycN2KqSkk1LW1kW12cl86WumqrjkJ1h6fwniFj40ecjNFyBNadSzsvCeLjNnOVS4OeQWty831KK2b98WaBhoHsCtZxaMLdmpfjaX8b5uFG3Dz7yt2nxBNLv659pAASI8y/A/all");					  
 
+		
+		
+		
+		//Page[] page2 = gson.fromJson(jsonString,Page[].class);
+		
+		System.out.println("TEST: " + json2.getType());
+		
+		// if(json2.isJsonObject())
+		// {
+			// System.out.println("Json2 is een object.");
+		// }
+		// else if(json2.isJsonArray())
+		// {
+			// System.out.println("Json2 is een Array.");
+		// }
+		
+		
 		
 		
 		
