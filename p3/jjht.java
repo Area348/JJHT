@@ -21,7 +21,7 @@ public class jjht
 	
 	
 	//-- Verkrijg de inhoud van de website. (in dit geval json)
-		System.out.print("Inhoud URL: ");
+		System.out.print("Inhoud URL (A/last - Single line):");
 		String json = readUrl("http://jotihunt-api-v2.area348.nl/vos/cKOFQls4ihdc2FiR05qrIDOK5Ub8D0Ksive2xwRKmDmVcWVo22hvl0E65sKxJtOFfExN659Nhmn1eAphVm0WQKmQXnckHjKf59HVy0ie5tgu9CNyH3CLeSXXGFxuywycN2KqSkk1LW1kW12cl86WumqrjkJ1h6fwniFj40ecjNFyBNadSzsvCeLjNnOVS4OeQWty831KK2b98WaBhoHsCtZxaMLdmpfjaX8b5uFG3Dz7yt2nxBNLv659pAASI8y/A/last");					  
 	//--Print de verkregen inhout van json, voor controle van de inhoud.
 		System.out.println(json);
@@ -37,7 +37,7 @@ public class jjht
 		
 		//.getType();
 		
-		
+	
 		System.out.println("");
 	//-- fromJson zo als die bij 1 object werkt.	
 		System.out.print("gson.fromJson(): ");
@@ -45,14 +45,14 @@ public class jjht
 		System.out.println("");
 		System.out.println("");
 	//-- Laat het id van het object (van uit de db zien)
-		System.out.println("id in de db:" + page.id);
+		System.out.println("id in de db:" + page.id +"Single ref op gehaald via page.id.");
 		System.out.println("");
 		System.out.println("");
 		System.out.println("RUN FIELDS:");
 		Field[] fields = page.getClass().getDeclaredFields();
 		for (int i=0; i<fields.length; i++)
 		{
-			System.out.println(fields[i].getName() + " - " + fields[i].get(page));
+			System.out.println("\t" + fields[i].getName() + " - " + fields[i].get(page));
 		}
 		
 		
@@ -64,15 +64,60 @@ public class jjht
 
 
 //-- OBJECT binnen halen.		
-		System.out.print("Inhoud URL2: ");
+		System.out.print("Inhoud URL2 (A/All Multi lines.): ");
 		String json2 = readUrl("http://jotihunt-api-v2.area348.nl/vos/cKOFQls4ihdc2FiR05qrIDOK5Ub8D0Ksive2xwRKmDmVcWVo22hvl0E65sKxJtOFfExN659Nhmn1eAphVm0WQKmQXnckHjKf59HVy0ie5tgu9CNyH3CLeSXXGFxuywycN2KqSkk1LW1kW12cl86WumqrjkJ1h6fwniFj40ecjNFyBNadSzsvCeLjNnOVS4OeQWty831KK2b98WaBhoHsCtZxaMLdmpfjaX8b5uFG3Dz7yt2nxBNLv659pAASI8y/A/all");					  
+	//--Print de verkregen inhout van jsons, voor controle van de inhoud.
+		System.out.println(json2);
+		System.out.println("");
+	//-- Verkrijg het TYPE van de inhoud van json2 (vrees dat het hier altijd om een string gaat).
+		Class cls2 = json2.getClass();	
+	//-- Print het TYPE of json.
+		System.out.println("The type of object is: " + cls2.getName());
+		System.out.println("");
+		
+	
+	//-- Maak een nieuw Gson object aan en noem deze gson.
+		Gson gson2 = new Gson();  
+		
+		//.getType();
+		
+	
+		System.out.println("");
+	//-- fromJson zo als die bij 1 object werkt.	
+		System.out.print("gson2.fromJson(): ");
+		Page[] page2 = gson2.fromJson(json2, Page[].class);
+		System.out.println("");
+		System.out.println("");
+	//-- Laat het id van het object (van uit de db zien)
+		System.out.println("id in de db:" + page2[0].id +" (Single ref op gehaald via page2[#].id.)");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("RUN FIELDS:");
+		System.out.println("Aantal Objecten gevonden in de array = " + page2.length);
+		
+		for (int t = 0; t < page2.length; t++)
+		{
+			System.out.println("T = " + t);
+			Field[] fields2 = page2[t].getClass().getDeclaredFields();
+			for (int i=0; i<fields2.length; i++)
+			{
+				System.out.println("\t" + fields2[i].getName() + " - " + fields2[i].get(page2[t]));
+			}
+		}
+		
+		
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
 
-		
-		
+
+
+	
 		
 		//Page[] page2 = gson.fromJson(jsonString,Page[].class);
 		
-		System.out.println("TEST: " + json2.getType());
+		//System.out.println("TEST: " + json2.getType());
 		
 		// if(json2.isJsonObject())
 		// {
@@ -93,16 +138,16 @@ public class jjht
 //-- http://sachinpatil.com/blog/2012/07/03/gson/
 	//Page[] test = gson.fromJson(json2, Page[].class);
 	
-	System.out.println("Json2: " + json2);
+	//System.out.println("Json2: " + json2);
 	//Page[] test = gson.fromJson(json2, Page[].class);
 	
 	//String test = json2.getClass();
 	
-	Gson gson2 = new Gson();
-	Type token = new TypeToken<List<gson2>>(){}.getType();
-	return gson2.fromJson(json2, token);
+//	Gson gson2 = new Gson();
+//	Type token = new TypeToken<List<gson2>>(){}.getType();
+//	return gson2.fromJson(json2, token);
 	
-	System.out.println(token);
+//	System.out.println(token);
 	
 	
 	// try{
@@ -133,7 +178,7 @@ public class jjht
 		// {
 			// System.out.println("    " + item.id);
 		// }
-		
+
 	}
 
 	private static String readUrl(String urlString) throws Exception {
