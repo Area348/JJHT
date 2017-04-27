@@ -25,23 +25,21 @@ public class jjht
 		
 		background.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
 		
-		Box buttonBox		=	new Box(BoxLayout.X_AXIS);
+		Box buttonBox1		=	new Box(BoxLayout.X_AXIS);
+		Box buttonBox2		=	new Box(BoxLayout.X_AXIS);
 		
 		JButton run			=	new JButton("Run");
 		run.addActionListener(new runListener());
-		buttonBox.add(run);
+		buttonBox1.add(run);
 		
 		String[] jlist1 		= {"hunter","vos","meta","sc","foto","gebruiker","fcm"}; 
 		JList list1				= new JList(jlist1);
 		JScrollPane scrollPane1	= new JScrollPane(list1);
 		scrollPane1.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane1.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		buttonBox.add(scrollPane1);
+		buttonBox1.add(scrollPane1);
 		list1.setVisibleRowCount(1);
 		list1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		
-		
-		//list1.addListSelectionListener(new ListSelectionListener());
 		list1.addListSelectionListener(new ListSelectionListener() {
 
             @Override
@@ -52,9 +50,28 @@ public class jjht
             }
         });
 		
+		String[] jlist2 		= {"hunter naam","all","naam","andere","id","team","info","sleutelExists"}; 
+		JList list2				= new JList(jlist2);
+		JScrollPane scrollPane2	= new JScrollPane(list2);
+		scrollPane2.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		scrollPane2.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		buttonBox2.add(scrollPane2);
+		list2.setVisibleRowCount(1);
+		list2.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		list2.addListSelectionListener(new ListSelectionListener() {
+
+            @Override
+            public void valueChanged(ListSelectionEvent arg0) {
+                if (!arg0.getValueIsAdjusting()) {
+                  System.out.println(list2.getSelectedValue().toString());
+                }
+            }
+        });
 		
 		
-		theFrame.getContentPane().add(BorderLayout.NORTH, buttonBox);
+		
+		theFrame.getContentPane().add(BorderLayout.NORTH, buttonBox1);
+		theFrame.getContentPane().add(BorderLayout.EAST, buttonBox2);
 		theFrame.setBounds(50,50,300,300);
 		theFrame.setSize(350,300);
 		theFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -75,13 +92,21 @@ public class jjht
 		}
 	}
 	
-	public void valueChanged(ListSelectionEvent arg0) 
-	{
-        if (!arg0.getValueIsAdjusting()) 
-		{
-            System.out.println(list1.getSelectedValue().toString());
-        }
-    }
+	// public void valueChanged1(ListSelectionEvent arg0) 
+	// {
+        // if (!arg0.getValueIsAdjusting()) 
+		// {
+            // System.out.println(list1.getSelectedValue().toString());
+        // }
+    // }
+	
+	// public void valueChanged2(ListSelectionEvent arg0) 
+	// {
+        // if (!arg0.getValueIsAdjusting()) 
+		// {
+            // System.out.println(list2.getSelectedValue().toString());
+        // }
+    // }
 	
 	
 }
