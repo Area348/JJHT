@@ -33,12 +33,12 @@ public class jjht
 
     public void go()
     {
-    //-- Maak nieuw JFrame en JPanel aan.
+        //-- Maak nieuw JFrame en JPanel aan.
         frame 			    = new JFrame();
         panel 			    = new JPanel();
 
 
-    //-- BoxLayout Y_AXIS
+        //-- BoxLayout Y_AXIS
         panelCall			= new JPanel();
         panelCall.setLayout(new BoxLayout(panelCall, BoxLayout.Y_AXIS));
         panelCat 			= new JPanel();
@@ -49,7 +49,7 @@ public class jjht
         paneSub1.setLayout(new BoxLayout(paneSub1, BoxLayout.Y_AXIS));
         pane = new JScrollPane();
 
-    //-- BoxLayout Y_AXIS
+        //-- BoxLayout Y_AXIS
         labelCall            = new JLabel("Label 0");
         labelCat             = new JLabel("Label 1");
         labelKey             = new JLabel("Label 2");
@@ -57,12 +57,12 @@ public class jjht
 
         labelKeyText         = new JLabel("     KEY     ");
 
-    //-- Voeg het 1e JLabel en het 1e ScrollPanel toe aan het 1e panel
+        //-- Voeg het 1e JLabel en het 1e ScrollPanel toe aan het 1e panel
         panelCall.add(labelCall);
         panelCall.add(listCall());
         panel.add(panelCall);
 
-    //-- Vpeg het panel to aan het frame.
+        //-- Vpeg het panel to aan het frame.
         frame.add(BorderLayout.CENTER, panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(600,300);
@@ -84,12 +84,15 @@ public class jjht
                     JScrollPane TEST = listGetPost(list0.getSelectedValue().toString());
                     String waarde = (list0.getSelectedValue().toString());
 
-                //-- Controleer de huidige waarde om daarmee de oude waarde te kunnen verwijderen.
+                    //-- Controleer de huidige waarde om daarmee de oude waarde te kunnen verwijderen.
                     if(waarde == "get" )
                     {
                         JScrollPane TEST2 = listGetPost("post");
                         panelCat.remove(TEST2);     //-- DIT DOET NOG NIETS....
                         panelCat.add(TEST);         //-- Voeg het nieuwe JScrollPane toe aan panelCat.
+                        panelCat.revalidate();
+                        panelCat.repaint();
+
                         panel.revalidate();
                         panel.repaint();            //-- Repaint panel.
                     }
@@ -98,11 +101,14 @@ public class jjht
                         JScrollPane TEST2 = listGetPost("get");
                         panelCat.remove(TEST2);     //-- DIT DOET NOG NIETS....
                         panelCat.add(TEST);         //-- Voeg het nieuwe JScrollPane toe aan panelCat.
+                        panelCat.revalidate();
+                        panelCat.repaint();
+
                         panel.revalidate();
                         panel.repaint();            //-- Repaint panel.
                     }
 
-                //-- Plaats de nieuwe panelCat op het hoofd panel en repaint daarna het panel
+                    //-- Plaats de nieuwe panelCat op het hoofd panel en repaint daarna het panel
                     panel.add(panelCat);
                     panel.revalidate();
                     panel.repaint();
