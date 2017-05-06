@@ -87,25 +87,19 @@ public class jjht
                     //-- Controleer de huidige waarde om daarmee de oude waarde te kunnen verwijderen.
                     if(waarde == "get" )
                     {
-                        JScrollPane TEST2 = listGetPost("post");
-                        panelCat.remove(TEST2);     //-- DIT DOET NOG NIETS....
-                        panelCat.add(TEST);         //-- Voeg het nieuwe JScrollPane toe aan panelCat.
+                        panelCat.removeAll();
+                        panelCat.add(labelCat);
+                        panelCat.add(TEST);
                         panelCat.revalidate();
                         panelCat.repaint();
-
-                        panel.revalidate();
-                        panel.repaint();            //-- Repaint panel.
                     }
                     else if (waarde == "post" )
                     {
-                        JScrollPane TEST2 = listGetPost("get");
-                        panelCat.remove(TEST2);     //-- DIT DOET NOG NIETS....
-                        panelCat.add(TEST);         //-- Voeg het nieuwe JScrollPane toe aan panelCat.
+                        panelCat.removeAll();
+                        panelCat.add(labelCat);
+                        panelCat.add(TEST);
                         panelCat.revalidate();
                         panelCat.repaint();
-
-                        panel.revalidate();
-                        panel.repaint();            //-- Repaint panel.
                     }
 
                     //-- Plaats de nieuwe panelCat op het hoofd panel en repaint daarna het panel
