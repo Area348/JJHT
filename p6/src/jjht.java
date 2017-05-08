@@ -119,12 +119,12 @@ public class jjht
     }
 
 
-
+//-- GET
     public JScrollPane list_get()
     {
         System.out.println("list_get");
 
-        String[] jlist1 = {"hunter_get", "vos", "meta", "sc", "foto", "gebruiker", "fcm"};
+        String[] jlist1 = {"Hunter", "Vos", "Meta", "Sc", "Foto", "Gebruiker", "Fcm"};
         JList list1 = new JList(jlist1);
         list1.setVisibleRowCount(1);
 
@@ -136,11 +136,31 @@ public class jjht
     }
 
 
+    public JScrollPane list_sub1()
+    {
+        System.out.println("list_sub1");
+
+        String[] jlist1 = {"Hunter", "Vos", "Meta", "Sc", "Foto", "Gebruiker", "Fcm"};
+        JList list1 = new JList(jlist1);
+        list1.setVisibleRowCount(1);
+
+        JScrollPane scrollPane1Cat = new JScrollPane(list1);
+        scrollPane1Cat.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollPane1Cat.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        return scrollPane1Cat;
+    }
+
+
+
+
+
+//-- POST
     public JScrollPane list_post()
     {
         System.out.println("list_post");
 
-        String[] jlist1 = {"hunter_post", "vos", "meta", "sc", "foto", "gebruiker", "fcm"};
+        String[] jlist1 = {"Login", "Hunter", "Vos"};
         JList list1 = new JList(jlist1);
         list1.setVisibleRowCount(1);
 
