@@ -131,7 +131,41 @@ public class jjht
         JScrollPane scrollPane1Cat = new JScrollPane(list1);
         scrollPane1Cat.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPane1Cat.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        list1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        list1.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent arg0) {
+                if (!arg0.getValueIsAdjusting()) {
 
+                    JScrollPane TEST = listGetPost(list1.getSelectedValue().toString());
+                    String waarde = (list1.getSelectedValue().toString());
+
+                    //-- Controleer de huidige waarde om daarmee de oude waarde te kunnen verwijderen.
+                    if(waarde == "get" )
+                    {
+                        panelCat.removeAll();
+                        panelCat.add(labelCat);
+                        panelCat.add(TEST);
+                        panelCat.revalidate();
+                        panelCat.repaint();
+                    }
+                    else if (waarde == "post" )
+                    {
+                        panelCat.removeAll();
+                        panelCat.add(labelCat);
+                        panelCat.add(TEST);
+                        panelCat.revalidate();
+                        panelCat.repaint();
+                    }
+
+                    //-- Plaats de nieuwe panelCat op het hoofd panel en repaint daarna het panel
+                    panel.add(panelCat);
+                    panel.revalidate();
+                    panel.repaint();
+
+                }
+            }
+        });
         return scrollPane1Cat;
     }
 
