@@ -15,7 +15,7 @@ public class jjht
     private JPanel panelCall;
     private JPanel panelCat;
     private JPanel panelKey;
-    private JPanel paneSub1;
+    private JPanel panelSub1;
     private JScrollPane pane;
 
     private JLabel labelCall;
@@ -45,8 +45,8 @@ public class jjht
         panelCat.setLayout(new BoxLayout(panelCat, BoxLayout.Y_AXIS));
         panelKey 			= new JPanel();
         panelKey.setLayout(new BoxLayout(panelKey, BoxLayout.Y_AXIS));
-        paneSub1 			= new JPanel();
-        paneSub1.setLayout(new BoxLayout(paneSub1, BoxLayout.Y_AXIS));
+        panelSub1 			= new JPanel();
+        panelSub1.setLayout(new BoxLayout(panelSub1, BoxLayout.Y_AXIS));
         pane = new JScrollPane();
 
         //-- BoxLayout Y_AXIS
@@ -84,26 +84,24 @@ public class jjht
                     JScrollPane TEST = listGetPost(list0.getSelectedValue().toString());
                     String waarde = (list0.getSelectedValue().toString());
 
-                    //-- Controleer de huidige waarde om daarmee de oude waarde te kunnen verwijderen.
-                    if(waarde == "get" )
-                    {
-                        panelCat.removeAll();
-                        panelCat.add(labelCat);
-                        panelCat.add(TEST);
-                        panelCat.revalidate();
-                        panelCat.repaint();
-                    }
-                    else if (waarde == "post" )
-                    {
-                        panelCat.removeAll();
-                        panelCat.add(labelCat);
-                        panelCat.add(TEST);
-                        panelCat.revalidate();
-                        panelCat.repaint();
-                    }
+                    panelSub1.removeAll();
+                    panelKey.removeAll();
+                    panelCat.removeAll();
+                    panelCat.add(labelCat);
+                    panelCat.add(TEST);
+                    panelCat.revalidate();
+                    panelCat.repaint();
 
-                    //-- Plaats de nieuwe panelCat op het hoofd panel en repaint daarna het panel
                     panel.add(panelCat);
+                    if(waarde == "get") {
+                        panelKey.add(labelCat);
+                        panelKey.add(labelKeyText);
+                        panel.add(panelKey);
+                    }
+                    //-- Plaats de nieuwe panelCat op het hoofd panel en repaint daarna het panel
+
+
+
                     panel.revalidate();
                     panel.repaint();
 
@@ -122,8 +120,6 @@ public class jjht
 //-- GET
     public JScrollPane list_get()
     {
-        System.out.println("list_get");
-
         String[] jlist1 = {"Hunter", "Vos", "Meta", "Sc", "Foto", "Gebruiker", "Fcm"};
         JList list1 = new JList(jlist1);
         list1.setVisibleRowCount(1);
@@ -131,35 +127,24 @@ public class jjht
         JScrollPane scrollPane1Cat = new JScrollPane(list1);
         scrollPane1Cat.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPane1Cat.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
         list1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         list1.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent arg0) {
                 if (!arg0.getValueIsAdjusting()) {
 
-                    JScrollPane TEST = listGetPost(list1.getSelectedValue().toString());
+                    JScrollPane TEST = listSub1(list1.getSelectedValue().toString());
                     String waarde = (list1.getSelectedValue().toString());
 
-                    //-- Controleer de huidige waarde om daarmee de oude waarde te kunnen verwijderen.
-                    if(waarde == "get" )
-                    {
-                        panelCat.removeAll();
-                        panelCat.add(labelCat);
-                        panelCat.add(TEST);
-                        panelCat.revalidate();
-                        panelCat.repaint();
-                    }
-                    else if (waarde == "post" )
-                    {
-                        panelCat.removeAll();
-                        panelCat.add(labelCat);
-                        panelCat.add(TEST);
-                        panelCat.revalidate();
-                        panelCat.repaint();
-                    }
 
+                    panelSub1.removeAll();
+                    panelSub1.add(labelSub1);
+                    panelSub1.add(TEST);
+                    panelSub1.revalidate();
+                    panelSub1.repaint();
                     //-- Plaats de nieuwe panelCat op het hoofd panel en repaint daarna het panel
-                    panel.add(panelCat);
+                    panel.add(panelSub1);
                     panel.revalidate();
                     panel.repaint();
 
@@ -172,9 +157,93 @@ public class jjht
 
     public JScrollPane list_sub1()
     {
-        System.out.println("list_sub1");
-
         String[] jlist1 = {"Hunter", "Vos", "Meta", "Sc", "Foto", "Gebruiker", "Fcm"};
+        JList list1 = new JList(jlist1);
+        list1.setVisibleRowCount(1);
+
+        JScrollPane scrollPane1Cat = new JScrollPane(list1);
+        scrollPane1Cat.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollPane1Cat.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        return scrollPane1Cat;
+    }
+
+    public JScrollPane list_sub1_hunter()
+    {
+        String[] jlist1 = {"Hunter_namen", "All", "Naam", "Andere", "{id}"};
+        JList list1 = new JList(jlist1);
+        list1.setVisibleRowCount(1);
+
+        JScrollPane scrollPane1Cat = new JScrollPane(list1);
+        scrollPane1Cat.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollPane1Cat.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        return scrollPane1Cat;
+    }
+
+    public JScrollPane list_sub1_vos()
+    {
+        String[] jlist1 = {"Last", "All", "{id}"};
+        JList list1 = new JList(jlist1);
+        list1.setVisibleRowCount(1);
+
+        JScrollPane scrollPane1Cat = new JScrollPane(list1);
+        scrollPane1Cat.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollPane1Cat.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        return scrollPane1Cat;
+    }
+    public JScrollPane list_sub1_meta()
+    {
+        String[] jlist1 = {"NULL"};
+        JList list1 = new JList(jlist1);
+        list1.setVisibleRowCount(1);
+
+        JScrollPane scrollPane1Cat = new JScrollPane(list1);
+        scrollPane1Cat.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollPane1Cat.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        return scrollPane1Cat;
+    }
+    public JScrollPane list_sub1_sc()
+    {
+        String[] jlist1 = {"All"};
+        JList list1 = new JList(jlist1);
+        list1.setVisibleRowCount(1);
+
+        JScrollPane scrollPane1Cat = new JScrollPane(list1);
+        scrollPane1Cat.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollPane1Cat.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        return scrollPane1Cat;
+    }
+    public JScrollPane list_sub1_foto()
+    {
+        String[] jlist1 = {"All", "id"};
+        JList list1 = new JList(jlist1);
+        list1.setVisibleRowCount(1);
+
+        JScrollPane scrollPane1Cat = new JScrollPane(list1);
+        scrollPane1Cat.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollPane1Cat.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        return scrollPane1Cat;
+    }
+    public JScrollPane list_sub1_gebruiker()
+    {
+        String[] jlist1 = {"Info", "SleutelExcists"};
+        JList list1 = new JList(jlist1);
+        list1.setVisibleRowCount(1);
+
+        JScrollPane scrollPane1Cat = new JScrollPane(list1);
+        scrollPane1Cat.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollPane1Cat.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        return scrollPane1Cat;
+    }
+    public JScrollPane list_sub1_fcm()
+    {
+        String[] jlist1 = {"{gebruiker}", "{FVM_Token"};
         JList list1 = new JList(jlist1);
         list1.setVisibleRowCount(1);
 
@@ -187,13 +256,9 @@ public class jjht
 
 
 
-
-
 //-- POST
     public JScrollPane list_post()
     {
-        System.out.println("list_post");
-
         String[] jlist1 = {"Login", "Hunter", "Vos"};
         JList list1 = new JList(jlist1);
         list1.setVisibleRowCount(1);
@@ -219,6 +284,39 @@ public class jjht
         return pane;
     }
 
+    public JScrollPane listSub1(String temp)
+    {
+        if(temp == "Hunter")
+        {
+            pane = list_sub1_hunter();
+        }
+        else if(temp == "Vos")
+        {
+            pane = list_sub1_vos();
+        }
+        else if(temp == "Meta")
+        {
+            pane = list_sub1_meta();
+        }
+        else if(temp == "Sc")
+        {
+            pane = list_sub1_sc();
+        }
+        else if(temp == "Foto")
+        {
+            pane = list_sub1_foto();
+        }
+        else if(temp == "Gebruiker")
+        {
+            pane = list_sub1_gebruiker();
+        }
+        else if(temp == "Fcm")
+        {
+            pane = list_sub1_fcm();
+        }
+
+        return pane;
+    }
 
 }
 
