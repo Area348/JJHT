@@ -16,13 +16,19 @@ public class jjht
     private JPanel panelCat;
     private JPanel panelKey;
     private JPanel panelSub1;
+    private JPanel panelSub2;
+    private JPanel panelSub3;
     private JScrollPane pane;
 
     private JLabel labelCall;
     private JLabel labelCat;
     private JLabel labelKey;
     private JLabel labelSub1;
+    private JLabel labelSub2;
+    private JLabel labelSub3;
     private JLabel labelKeyText;
+
+    private JTextField textField;
 
     public static void main(String[] args)
     {
@@ -47,13 +53,19 @@ public class jjht
         panelKey.setLayout(new BoxLayout(panelKey, BoxLayout.Y_AXIS));
         panelSub1 			= new JPanel();
         panelSub1.setLayout(new BoxLayout(panelSub1, BoxLayout.Y_AXIS));
+        panelSub2			= new JPanel();
+        panelSub2.setLayout(new BoxLayout(panelSub2, BoxLayout.Y_AXIS));
+        panelSub3 			= new JPanel();
+        panelSub3.setLayout(new BoxLayout(panelSub3, BoxLayout.Y_AXIS));
         pane = new JScrollPane();
 
         //-- BoxLayout Y_AXIS
-        labelCall            = new JLabel("Label 0");
-        labelCat             = new JLabel("Label 1");
-        labelKey             = new JLabel("Label 2");
-        labelSub1            = new JLabel("Sub 1");
+        labelCall            = new JLabel("Label Call");
+        labelCat             = new JLabel("Label Cat");
+        labelKey             = new JLabel("Label Key");
+        labelSub1            = new JLabel("Label Sub 1");
+        labelSub2            = new JLabel("Label Sub 2");
+        labelSub3            = new JLabel("Label Sub 3");
 
         labelKeyText         = new JLabel("     KEY     ");
 
@@ -87,14 +99,14 @@ public class jjht
                     panelSub1.removeAll();
                     panelKey.removeAll();
                     panelCat.removeAll();
+
                     panelCat.add(labelCat);
                     panelCat.add(TEST);
-                    panelCat.revalidate();
-                    panelCat.repaint();
 
                     panel.add(panelCat);
+
                     if(waarde == "get") {
-                        panelKey.add(labelCat);
+                        panelKey.add(labelKey);
                         panelKey.add(labelKeyText);
                         panel.add(panelKey);
                     }
@@ -137,13 +149,11 @@ public class jjht
                     JScrollPane TEST = listSub1(list1.getSelectedValue().toString());
                     String waarde = (list1.getSelectedValue().toString());
 
-
+                    panelSub2.removeAll();
                     panelSub1.removeAll();
                     panelSub1.add(labelSub1);
                     panelSub1.add(TEST);
-                    panelSub1.revalidate();
-                    panelSub1.repaint();
-                    //-- Plaats de nieuwe panelCat op het hoofd panel en repaint daarna het panel
+                    //-- Plaats de nieuwe panelSub1 op het hoofd panel en repaint daarna het panel
                     panel.add(panelSub1);
                     panel.revalidate();
                     panel.repaint();
@@ -155,18 +165,7 @@ public class jjht
     }
 
 
-    public JScrollPane list_sub1()
-    {
-        String[] jlist1 = {"Hunter", "Vos", "Meta", "Sc", "Foto", "Gebruiker", "Fcm"};
-        JList list1 = new JList(jlist1);
-        list1.setVisibleRowCount(1);
 
-        JScrollPane scrollPane1Cat = new JScrollPane(list1);
-        scrollPane1Cat.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-        scrollPane1Cat.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-
-        return scrollPane1Cat;
-    }
 
     public JScrollPane list_sub1_hunter()
     {
@@ -177,7 +176,61 @@ public class jjht
         JScrollPane scrollPane1Cat = new JScrollPane(list1);
         scrollPane1Cat.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPane1Cat.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        list1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        list1.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent arg0) {
+                if (!arg0.getValueIsAdjusting()) {
 
+                    //JScrollPane TEST = listSub2(list1.getSelectedValue().toString());
+                    String waarde = (list1.getSelectedValue().toString());
+
+
+                    panelSub2.removeAll();
+                    panelSub2.add(labelSub2);
+
+                    if(waarde == "Hunter_namen")
+                    {
+                        JTextField hunterNamen = new JTextField();
+                        textField = hunterNamen;
+                    }
+                    else if(waarde == "All")
+                    {
+                        pane = list_sub1_vos();
+                    }
+                    else if(waarde == "Naam")
+                    {
+                        pane = list_sub1_meta();
+                    }
+                    else if(waarde == "Andere")
+                    {
+                        pane = list_sub1_sc();
+                    }
+                    else if(waarde == "{id}")
+                    {
+                        pane = list_sub1_foto();
+                    }
+
+                    if(textField != null)
+                    {
+                        panelSub2.add(textField);
+                    } else if (pane != null )
+                    {
+                        panelSub2.add(pane);
+                    }
+
+
+
+
+
+                    //-- Plaats de nieuwe panelSub1 op het hoofd panel en repaint daarna het panel
+                    panel.add(panelSub2);
+                    panel.revalidate();
+                    panel.repaint();
+
+                }
+            }
+        });
         return scrollPane1Cat;
     }
 
@@ -318,6 +371,32 @@ public class jjht
         return pane;
     }
 
+    public JScrollPane listSub2(String temp)
+    {
+        if(temp == "Hunter_namen")
+        {
+            pane = list_sub1_hunter();
+        }
+        else if(temp == "All")
+        {
+            pane = list_sub1_vos();
+        }
+        else if(temp == "Naam")
+        {
+            pane = list_sub1_meta();
+        }
+        else if(temp == "Andere")
+        {
+            pane = list_sub1_sc();
+        }
+        else if(temp == "{id}")
+        {
+            pane = list_sub1_foto();
+        }
+
+        return pane;
+    }
 }
+
 
 
