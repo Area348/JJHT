@@ -30,6 +30,8 @@ public class jjht
 
     private JTextField textField;
 
+    private JButton send;
+
     public static void main(String[] args)
     {
         jjht gui = new jjht();
@@ -68,6 +70,8 @@ public class jjht
         labelSub3            = new JLabel("Label Sub 3");
 
         labelKeyText         = new JLabel("     KEY     ");
+
+
 
         //-- Voeg het 1e JLabel en het 1e ScrollPanel toe aan het 1e panel
         panelCall.add(labelCall);
@@ -185,6 +189,7 @@ public class jjht
                     //JScrollPane TEST = listSub2(list1.getSelectedValue().toString());
                     String waarde = (list1.getSelectedValue().toString());
 
+                    JButton send = new JButton("Send");
 
                     panelSub2.removeAll();
                     panelSub2.add(labelSub2);
@@ -193,6 +198,7 @@ public class jjht
                     {
                         JTextField hunterNamen = new JTextField();
                         textField = hunterNamen;
+
                     }
                     else if(waarde == "All")
                     {
@@ -214,7 +220,11 @@ public class jjht
                     if(textField != null)
                     {
                         panelSub2.add(textField);
-                    } else if (pane != null )
+                        panelSub3.add(labelSub3);
+                        panelSub3.add(send);
+
+                    }
+                    else if (pane != null )
                     {
                         panelSub2.add(pane);
                     }
