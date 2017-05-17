@@ -191,44 +191,71 @@ public class jjht
 
                     JButton send = new JButton("Send");
 
+                    panelSub3.removeAll();
                     panelSub2.removeAll();
+
                     panelSub2.add(labelSub2);
 
-                    if(waarde == "Hunter_namen")
+                    if (waarde == "Hunter_namen")
                     {
                         JTextField hunterNamen = new JTextField();
                         textField = hunterNamen;
-
-                    }
-                    else if(waarde == "All")
-                    {
-                        pane = list_sub1_vos();
-                    }
-                    else if(waarde == "Naam")
-                    {
-                        pane = list_sub1_meta();
-                    }
-                    else if(waarde == "Andere")
-                    {
-                        pane = list_sub1_sc();
-                    }
-                    else if(waarde == "{id}")
-                    {
-                        pane = list_sub1_foto();
-                    }
-
-                    if(textField != null)
-                    {
                         panelSub2.add(textField);
-                        panelSub3.add(labelSub3);
-                        panelSub3.add(send);
-
-                    }
-                    else if (pane != null )
-                    {
+                    } else if (waarde == "All") {
+                        pane = list_sub1_vos();
+                        panelSub2.add(pane);
+                    } else if (waarde == "Naam") {
+                        pane = list_sub1_meta();
+                        panelSub2.add(pane);
+                    } else if (waarde == "Andere") {
+                        pane = list_sub1_sc();
+                        panelSub2.add(pane);
+                    } else if (waarde == "{id}") {
+                        pane = list_sub1_foto();
                         panelSub2.add(pane);
                     }
 
+
+//                    panelSub2.add(labelSub2);
+//
+//
+//
+//
+//                        System.out.println("Waarde = " + waarde);
+//
+//                        if (waarde == "Hunter_namen") {
+//                            JTextField hunterNamen = new JTextField();
+//                            textField = hunterNamen;
+//                            panelSub3.add(labelSub2);
+//
+//                        } else if (waarde == "All") {
+//                            pane = list_sub1_vos();
+//                            panelSub3.add(labelSub3);
+//                        } else if (waarde == "Naam") {
+//                            pane = list_sub1_meta();
+//                        } else if (waarde == "Andere") {
+//                            pane = list_sub1_sc();
+//                        } else if (waarde == "{id}") {
+//                            pane = list_sub1_foto();
+//                        }
+//
+//
+//                        if(textField != null)
+//                        {
+//                            panelSub2.add(textField);
+//                            panelSub3.add(labelSub3);
+//                            panelSub3.add(send);
+//
+//                        }
+//                        else if (pane != null )
+//                        {
+//                            panelSub2.add(pane);
+//                        }
+//                        else
+//                        {
+//
+//                        }
+//
 
 
 
