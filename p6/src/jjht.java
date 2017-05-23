@@ -73,6 +73,7 @@ public class jjht implements ActionListener
 
 
 
+
         //-- Voeg het 1e JLabel en het 1e ScrollPanel toe aan het 1e panel
         panelCall.add(labelCall);
         panelCall.add(listCall());
@@ -416,7 +417,11 @@ public class jjht implements ActionListener
 //            }
 
             p3 test = new p3();
-            test.main();  //-- Dit kan dus niet...
+
+            String[] bla = new String[1];
+            bla[0] = "Bla";
+
+            test.main(bla);  //-- Dit kan dus niet...
 
         }
 
