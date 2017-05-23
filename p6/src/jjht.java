@@ -8,7 +8,7 @@ import javax.swing.event.ListSelectionListener;
 
 
 
-public class jjht
+public class jjht implements ActionListener
 {
     private JFrame frame;
     private JPanel panel;
@@ -30,7 +30,7 @@ public class jjht
 
     private JTextField textField;
 
-    private JButton send;
+    private JButton sendButton;
 
     public static void main(String[] args)
     {
@@ -189,7 +189,7 @@ public class jjht
                     //JScrollPane TEST = listSub2(list1.getSelectedValue().toString());
                     String waarde = (list1.getSelectedValue().toString());
 
-                    JButton send = new JButton("Send");
+
 
                     panelSub3.removeAll();
                     panelSub2.removeAll();
@@ -201,6 +201,12 @@ public class jjht
                         JTextField hunterNamen = new JTextField();
                         textField = hunterNamen;
                         panelSub2.add(textField);
+
+                        JButton sendButton = new JButton("Send");
+                        sendButton.addActionListener(jjht.this::actionPerformed);
+                        panelSub3.add(labelSub3);
+                        panelSub3.add(sendButton);
+
                     } else if (waarde == "All") {
                         pane = list_sub1_vos();
                         panelSub2.add(pane);
@@ -216,52 +222,13 @@ public class jjht
                     }
 
 
-//                    panelSub2.add(labelSub2);
-//
-//
-//
-//
-//                        System.out.println("Waarde = " + waarde);
-//
-//                        if (waarde == "Hunter_namen") {
-//                            JTextField hunterNamen = new JTextField();
-//                            textField = hunterNamen;
-//                            panelSub3.add(labelSub2);
-//
-//                        } else if (waarde == "All") {
-//                            pane = list_sub1_vos();
-//                            panelSub3.add(labelSub3);
-//                        } else if (waarde == "Naam") {
-//                            pane = list_sub1_meta();
-//                        } else if (waarde == "Andere") {
-//                            pane = list_sub1_sc();
-//                        } else if (waarde == "{id}") {
-//                            pane = list_sub1_foto();
-//                        }
-//
-//
-//                        if(textField != null)
-//                        {
-//                            panelSub2.add(textField);
-//                            panelSub3.add(labelSub3);
-//                            panelSub3.add(send);
-//
-//                        }
-//                        else if (pane != null )
-//                        {
-//                            panelSub2.add(pane);
-//                        }
-//                        else
-//                        {
-//
-//                        }
-//
 
 
 
 
                     //-- Plaats de nieuwe panelSub1 op het hoofd panel en repaint daarna het panel
                     panel.add(panelSub2);
+                    panel.add(panelSub3);
                     panel.revalidate();
                     panel.repaint();
 
@@ -433,6 +400,29 @@ public class jjht
 
         return pane;
     }
+
+        public void actionPerformed(ActionEvent e)
+        {
+            System.out.println("sendButton Clicked!!!");
+//
+//
+//          >> Class p3 = een ander bestand <<
+//            public class p3
+//            {
+//                public........ main(String[] args)
+//                {
+//                    System.out.println("PRINT DIT IN DE CONSOLE");
+//                }
+//            }
+
+            p3 test = new p3();
+            test.main();  //-- Dit kan dus niet...
+
+        }
+
+
+
+
 }
 
 
